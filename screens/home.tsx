@@ -1,41 +1,28 @@
-import { TextInput , IconButton, ListItem} from '@react-native-material/core';
-import {View, ScrollView} from 'react-native'
-import Icons from '@expo/vector-icons/MaterialIcons'
 
+
+import Icons2 from '@expo/vector-icons/AntDesign'
+import Icons3 from '@expo/vector-icons/FontAwesome'
 import Profile from './profile';
-import ContactTile from '../components/contact_tile';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import Messages from '../components/message';
+
+
+
 
 
 function Home({}) {
-
+    const Tab = createBottomTabNavigator();
 
     return (
         <>
-
-        <View style={{backgroundColor:'white',flexDirection:'row' ,alignContent:'center', justifyContent:'space-around'}}>
-            <TextInput placeholder='search' style={{width:'75%', marginTop:5}}  inputContainerStyle={{height: 40, alignItems:'center', }}  color='grey' variant='outlined'  />
-            <IconButton icon={<Icons name='settings'  size={25}/>}> </IconButton>
-        </View>
-        
-        <ScrollView>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-            <ContactTile/>
-
-        </ScrollView>
+        <Tab.Navigator>
+            <Tab.Screen name="index" component={Messages} options={{
+                headerShown:false ,tabBarIcon:(() => <Icons2 name='message1' size={20}></Icons2>)
+            }}/>
+            <Tab.Screen name="Profile" component={Profile} options={{
+                headerShown:false, tabBarIcon:(()=> <Icons3 name='user-circle-o' size={20}></Icons3>)
+            }}/>
+        </Tab.Navigator>
         </>
     );
 }

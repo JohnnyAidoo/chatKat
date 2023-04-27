@@ -4,14 +4,13 @@ import Home from './screens/home';
 import {useFonts} from 'expo-font'
 import AppLoading from 'expo-app-loading';
 import {NavigationContainer} from '@react-navigation/native'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Profile from './screens/profile';
-import FontAwesome from '@expo/vector-icons/FontAwesome'
-import Icons from '@expo/vector-icons/AntDesign'
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import Chat from './screens/chat';
 
 
 export default function App() {
-  const BottomTabNavigator = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
   const [fontsLoaded] = useFonts({
     'fredoka': require('./assets/fonts/Fredoka-Bold.ttf'),
   })
@@ -22,16 +21,11 @@ export default function App() {
   return (
       <>
       <NavigationContainer>
-
-        <BottomTabNavigator.Navigator >
-          <BottomTabNavigator.Screen 
-          options={{tabBarIcon : () => (<Icons name='message1' size={20} />) , 
-          headerTitle:'ChatKat' , headerShadowVisible: false, headerTitleStyle:{fontFamily: 'fredoka', fontSize: 25}}} 
-          name='Messages' component={Home}  />
-
-          <BottomTabNavigator.Screen name='Profile' component={Profile}
-          options={{tabBarIcon: () =>(<Icons name='user' size={20}/>)}} />
-        </BottomTabNavigator.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen options={{
+            headerShadowVisible:false, title:'ChatKat', headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}} name='Home' component={Home} />
+          <Stack.Screen name='chat' component={Chat} />
+        </Stack.Navigator>
       </NavigationContainer>
       </>
   );
