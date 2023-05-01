@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , Dimensions} from 'react-native';
 import Home from './screens/home';
 import {useFonts} from 'expo-font'
 import AppLoading from 'expo-app-loading';
@@ -7,16 +7,20 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Chat from './screens/chat';
+import { ActivityIndicator } from '@react-native-material/core';
 
 
 export default function App() {
+  const HEIGHT = Dimensions.get('window').height;
   const Stack = createNativeStackNavigator();
   const [fontsLoaded] = useFonts({
     'fredoka': require('./assets/fonts/Fredoka-Bold.ttf'),
   })
 
   if (!fontsLoaded) {
-    return <AppLoading/>;
+    return <View style={{height:HEIGHT, alignContent:'center', justifyContent:'center'}} >
+      <ActivityIndicator size={'large'} />
+    </View>;
   }
   return (
       <>
