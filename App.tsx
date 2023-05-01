@@ -21,10 +21,14 @@ export default function App() {
   return (
       <>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName='home'>
           <Stack.Screen options={{
             headerShadowVisible:false, title:'ChatKat', headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}} name='Home' component={Home} />
-          <Stack.Screen name='chat' component={Chat} />
+          <Stack.Screen name='home' component={Home} 
+          options={{title:'ChatKat', headerShadowVisible:false, headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}}/>
+          <Stack.Screen name='chat' component={Chat} 
+          options={{headerShown:false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       </>
