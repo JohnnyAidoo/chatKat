@@ -8,6 +8,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Chat from './screens/chat';
 import { ActivityIndicator } from '@react-native-material/core';
+import Login from './screens/login_screen';
 
 
 export default function App() {
@@ -25,12 +26,17 @@ export default function App() {
   return (
       <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='home'>
+        <Stack.Navigator initialRouteName='login'>
           <Stack.Screen options={{
             headerShadowVisible:false, title:'ChatKat', headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}} name='Home' component={Home} />
+          
           <Stack.Screen name='home' component={Home} 
-          options={{title:'ChatKat', headerShadowVisible:false, headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}}/>
+          options={{title:'ChatKat', headerShadowVisible:false,headerBackVisible:false, headerTitleStyle:{fontFamily:'fredoka', fontSize:25}}}/>
+          
           <Stack.Screen name='chat' component={Chat} 
+          options={{headerShown:false}}
+          />
+          <Stack.Screen name='login' component={Login} 
           options={{headerShown:false}}
           />
         </Stack.Navigator>

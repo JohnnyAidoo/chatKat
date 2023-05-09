@@ -4,13 +4,13 @@ import Icons2 from '@expo/vector-icons/AntDesign'
 import Icons3 from '@expo/vector-icons/FontAwesome'
 import Profile from './profile';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Messages from './message';
+import Messages from './groups';
 
 
 
 
 
-function Home({}) {
+function Home({route}) {
     const Tab = createBottomTabNavigator();
 
     return (
